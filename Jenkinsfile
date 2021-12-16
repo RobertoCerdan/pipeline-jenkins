@@ -8,12 +8,12 @@ pipeline {
 
     environment {
         // https://hub.docker.com/repositories
-        imageName = "widemos/nginx-egibide"
+        imageName = "roberkas98/nginx"
 
         // https://hub.docker.com/settings/security
         registryCredential = 'docker-hub'
 
-        publicPort = "80"
+        publicPort = "9001"
     }
 
     stages {
@@ -44,8 +44,8 @@ pipeline {
 
         stage('Docker Run') {
             steps {
-                sh "docker rm -f nginx-egibide"
-                sh "docker run -d -p ${publicPort}:80 --name nginx-egibide ${imageName}:latest"
+                sh "docker rm -f nginx-rober"
+                sh "docker run -d -p ${publicPort}:80 --name nginx-rober ${imageName}:latest"
             }
         }
     }
